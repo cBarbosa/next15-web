@@ -67,6 +67,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E4E1B0C90333427B8957A70CD747AA1F }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_117F859B7FCB431E9B321E552808E496 }}
 
+      - name: 'Delete zip files from previous deployment'
+        run: rm -rf ./*
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -75,7 +78,5 @@ jobs:
           slot-name: 'Production'
           package: release.zip
 
-      - name: 'Delete zip file'
-        run: rm release.zip
   
 # https://azureossd.github.io/2024/02/05/NextJS-deployment-on-App-Service-Windows/
