@@ -31,7 +31,7 @@ jobs:
         run: ls -R ./*
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./ -x "node_modules/*" -x ".git/*" -x ".github/*"
+        run: zip -r release.zip ./* .next -x "node_modules/*" -x ".git/*" -x ".github/*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -75,3 +75,4 @@ jobs:
           slot-name: 'Production'
           package: .
           
+# https://azureossd.github.io/2024/02/05/NextJS-deployment-on-App-Service-Windows/
