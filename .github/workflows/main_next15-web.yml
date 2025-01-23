@@ -57,8 +57,8 @@ jobs:
       # - name: Unzip artifact for deployment
       #   run: unzip release.zip -d ./ && rm release.zip
 
-      # - name: List files after
-      #   run: ls -R ./
+      - name: List files after
+        run: ls -R ./
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -67,8 +67,8 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E4E1B0C90333427B8957A70CD747AA1F }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_117F859B7FCB431E9B321E552808E496 }}
 
-      - name: 'Delete zip files from previous deployment'
-        run: rm -rf ./*
+      # - name: 'Delete zip files from previous deployment'
+      #   run: rm -rf ./*
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
